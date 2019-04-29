@@ -43,8 +43,16 @@ type User {
   name: String!
   email: String
   password: String!
+  palettes: [Palette!]!
   updatedAt: String!
   createdAt: String!
+}
+
+type Palette {
+  id: ID!
+  name: String!
+  colors: [String!]!
+  author: User!
 }
 
 enum MutationType {

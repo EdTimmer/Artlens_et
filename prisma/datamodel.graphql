@@ -3,6 +3,14 @@ type User {
   name: String!
   email: String! @unique
   password: String!
+  palettes: [Palette!]!
   updatedAt: DateTime!
   createdAt: DateTime!
+}
+
+type Palette {
+  id: ID! @unique
+  name: String!
+  colors: [String!]!
+  author: User!
 }
