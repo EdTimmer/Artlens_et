@@ -3,6 +3,8 @@
 type Query {
   users(query: String, first: Int, skip: Int, after: String, orderBy: UserOrderByInput): [User!]!
   me: User!  
+  palettes2: Palette2!
+  palette2: Palette2!
 }
 
 type Mutation {
@@ -10,6 +12,7 @@ type Mutation {
   login(data: LoginUserInput!): AuthPayload!
   deleteUser: User!
   updateUser(data: UpdateUserInput!): User!  
+  createPalette2(data: CreatePaletteInput2!): Palette2!
 }
 
 # type Subscription {
@@ -43,17 +46,26 @@ type User {
   name: String!
   email: String
   password: String!
-  palettes: [Palette!]!
+  palettes2: [Palette2!]!
   updatedAt: String!
   createdAt: String!
 }
 
-type Palette {
+type Palette2 {
   id: ID!
   name: String!
+  description: String
   colors: [String!]!
   author: User!
 }
+
+input CreatePaletteInput2 {
+  name: String!
+  description: String!
+  colors: [String!]!
+}
+
+
 
 enum MutationType {
   CREATED,

@@ -70,7 +70,44 @@ const Mutation = {
       data: args.data
     }, info);
 
-  }  
+  },
+  
+  
+  // async createPalette(parent, args, { prisma, request }, info) {
+
+  //   const userId = getUserId(request);
+
+  //   return await prisma.mutation.createPalette({
+  //     data: {
+  //       name: args.data.name,
+  //       description: args.data.description,
+        
+  //       author: {
+  //         connect: {
+  //           id: userId
+  //         }
+  //       }
+  //     }
+  //   }, info);
+  // },
+
+  async createPalette2(parent, args, { prisma, request }, info) {
+
+    const userId = getUserId(request);
+
+    return await prisma.mutation.createPalette2({
+      data: {
+        name: args.data.name,
+        description: args.data.description,
+        
+        author: {
+          connect: {
+            id: userId
+          }
+        }
+      }
+    }, info);
+  },
 };
 
 export { Mutation as default };
